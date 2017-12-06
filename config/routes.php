@@ -41,6 +41,15 @@ use Cake\Routing\Route\DashedRoute;
  * `:action` markers.
  *
  */
+// aqui deifina uma nova rota que liga o caminho /bookmarks/tagged/* a BooksmarksController::tags()
+Router::scope(
+    '/bookmarks',
+    ['controller' => 'Bookmarks'],
+    function ($routes) {
+        $routes->connect('/tagged/*', ['action' => 'tags']);
+    }
+);
+
 Router::defaultRouteClass(DashedRoute::class);
 
 Router::scope('/', function (RouteBuilder $routes) {

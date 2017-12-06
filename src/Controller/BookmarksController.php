@@ -11,6 +11,15 @@ use App\Controller\AppController;
 class BookmarksController extends AppController
 {
 
+    // criando o controller tags
+    public function  taged()
+    {
+        $tags = $this->request->getParam('pass');
+        $bookmarks = $this->Bookmarks->find('tagged', [
+            'tags' => $tags
+        ]);
+        $this->set(compact('bookmarks', 'tags'));
+    }
     /**
      * Index method
      *
@@ -113,4 +122,5 @@ class BookmarksController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
 }
