@@ -87,6 +87,32 @@ class UsersController extends AppController
         $this->set('_serialize', ['user']);
     }
 
+
+    // efetuando o login
+    public function login()
+    {
+        if ($this->request->is('post')) {
+            $user = $this->Auth->identify();
+            if ($user) {
+                $this->Auth->setUser($user);
+                return $this->redirect($this->Auth->redirectUrl());
+            }
+            $this->Flash->error('E-Mail ou senha invalidos.');
+        }
+    }
+    // saindo do login
+    public function logout()
+    {
+        $this->Flash->success('Você efetuou saio do sistema.');
+        return $this->redirect($this->Auth->logout());
+    }
+    //ativando as inscrições
+    public function beforeFilter(\Cake\Event\Event $event)
+    {
+        $this->Auth->allow(['add']);
+    }
+
+
     /**
      * Delete method
      *
