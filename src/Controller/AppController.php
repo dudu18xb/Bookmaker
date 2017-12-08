@@ -42,24 +42,28 @@ class AppController extends Controller
     {
         $this->loadComponent('Flash');
         $this->loadComponent('Auth', [
+            'authorize' => 'Controller',
             'authenticate' => [
                 'Form' => [
                     'fields' => [
                         'username' => 'email',
-                        'password' => 'password'
+                        'password' => 'password',
                     ]
                 ]
             ],
             'loginAction' => [
                 'controller' => 'Users',
                 'action' => 'login'
-            ]
+            ],
+            'unauthorizedRedirect' => $this->referer()
         ]);
         // Permite a ação display, assim nosso pages controller
         // continua a funcionar.
         $this->Auth->allow(['display']);
     }
-
+    public function isAuthorized($user){
+        return false;
+    }
     /**
      * Before render callback.
      *

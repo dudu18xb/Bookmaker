@@ -123,5 +123,28 @@ class BookmarksController extends AppController
     }
     // criando o controller tags
 
+    public function isAuthorized($user){
+        $action = $this->request->params['action'];
+
+
+        // as acções add e Index são permitidas sempre.
+        if(in_array($action, ['index', 'add', 'tags'])){
+            return true;
+        }
+        // todas as outra ações requerem um id
+        if (!$this->request->getParam('pass.0')){
+            return false;
+        }
+
+        // checar se o bookmark pertence ao user atual
+        $id = $this->Bookmarks->getParam('pass.0');
+        $bookmark = $this->Bookmarks->get($id);
+        if ($bookmark->user_id == $user['id']){
+            return true;
+        }
+        return parent::isAuthorized($user);
+
+    }
+
 
 }
