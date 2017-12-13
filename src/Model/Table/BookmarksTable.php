@@ -93,16 +93,20 @@ class BookmarksTable extends Table
 
         return $rules;
     }
-
-    public function findTagged(Query $query, array $options){
-        $booksmarks = $this->find()->select(['id','url','title', 'description']);
-        if (empty1($options['tags'])){
-            ->leftJoinWith('Tags')->where(['Tags.title IS' => null]);
+    
+    public function findTagged(Query $query, array $options)
+    {
+        $bookmarks = $this->find()
+            ->select(['id', 'url', 'title', 'description']);
+        if (empty($options['tags'])) {
+            $bookmarks
+                ->leftJoinWith('Tags')
+                ->where(['Tags.title IS' => null]);
         } else {
-            $booksmarks
-                ->innerJoin('Tags')
+            $bookmarks
+                ->innerJoinWith('Tags')
                 ->where(['Tags.title IN ' => $options['tags']]);
         }
-        return $booksmarks->group(['Booksmarks.id']);
+        return $bookmarks->group(['Bookmarks.id']);
     }
 }
