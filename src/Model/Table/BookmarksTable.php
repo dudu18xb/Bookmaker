@@ -93,7 +93,7 @@ class BookmarksTable extends Table
 
         return $rules;
     }
-    
+
     public function findTagged(Query $query, array $options)
     {
         $bookmarks = $this->find()
