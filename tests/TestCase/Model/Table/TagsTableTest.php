@@ -38,7 +38,7 @@ class TagsTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::exists('Tags') ? [] : ['className' => 'App\Model\Table\TagsTable'];
+        $config = TableRegistry::exists('Tags') ? [] : ['className' => TagsTable::class];
         $this->Tags = TableRegistry::get('Tags', $config);
     }
 

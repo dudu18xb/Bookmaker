@@ -1,6 +1,7 @@
 <?php
 /**
  * @var \App\View\AppView $this
+ * @var \App\Model\Entity\Bookmark $bookmark
  */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
@@ -24,11 +25,11 @@
     <fieldset>
         <legend><?= __('Edit Bookmark') ?></legend>
         <?php
-            echo $this->Form->input('user_id', ['options' => $users]);
-            echo $this->Form->input('title');
-            echo $this->Form->input('description');
-            echo $this->Form->input('url');
-            echo $this->Form->input('tags._ids', ['options' => $tags]);
+            echo $this->Form->control('user_id', ['options' => $users]);
+            echo $this->Form->control('title');
+            echo $this->Form->control('description');
+            echo $this->Form->control('url');
+            echo $this->Form->control('tags._ids', ['options' => $tags]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

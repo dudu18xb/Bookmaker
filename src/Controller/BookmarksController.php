@@ -7,6 +7,8 @@ use App\Controller\AppController;
  * Bookmarks Controller
  *
  * @property \App\Model\Table\BookmarksTable $Bookmarks
+ *
+ * @method \App\Model\Entity\Bookmark[] paginate($object = null, array $settings = [])
  */
 class BookmarksController extends AppController
 {
@@ -14,7 +16,7 @@ class BookmarksController extends AppController
     /**
      * Index method
      *
-     * @return \Cake\Network\Response|null
+     * @return \Cake\Http\Response|void
      */
     public function index()
     {
@@ -27,19 +29,11 @@ class BookmarksController extends AppController
         $this->set('_serialize', ['bookmarks']);
     }
 
-    public function tags()
-    {
-        $tags = $this->request->getParam('pass');
-        $bookmarks = $this->Bookmarks->find('tagged', [
-            'tags' => $tags
-        ]);
-        $this->set(compact('bookmarks', 'tags'));
-    }
     /**
      * View method
      *
      * @param string|null $id Bookmark id.
-     * @return \Cake\Network\Response|null
+     * @return \Cake\Http\Response|void
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function view($id = null)
@@ -55,13 +49,13 @@ class BookmarksController extends AppController
     /**
      * Add method
      *
-     * @return \Cake\Network\Response|null Redirects on successful add, renders view otherwise.
+     * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
     public function add()
     {
         $bookmark = $this->Bookmarks->newEntity();
         if ($this->request->is('post')) {
-            $bookmark = $this->Bookmarks->patchEntity($bookmark, $this->request->data);
+            $bookmark = $this->Bookmarks->patchEntity($bookmark, $this->request->getData());
             if ($this->Bookmarks->save($bookmark)) {
                 $this->Flash->success(__('The bookmark has been saved.'));
 
@@ -79,7 +73,7 @@ class BookmarksController extends AppController
      * Edit method
      *
      * @param string|null $id Bookmark id.
-     * @return \Cake\Network\Response|null Redirects on successful edit, renders view otherwise.
+     * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function edit($id = null)
@@ -88,7 +82,7 @@ class BookmarksController extends AppController
             'contain' => ['Tags']
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $bookmark = $this->Bookmarks->patchEntity($bookmark, $this->request->data);
+            $bookmark = $this->Bookmarks->patchEntity($bookmark, $this->request->getData());
             if ($this->Bookmarks->save($bookmark)) {
                 $this->Flash->success(__('The bookmark has been saved.'));
 
@@ -106,7 +100,7 @@ class BookmarksController extends AppController
      * Delete method
      *
      * @param string|null $id Bookmark id.
-     * @return \Cake\Network\Response|null Redirects to index.
+     * @return \Cake\Http\Response|null Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function delete($id = null)
@@ -121,30 +115,4 @@ class BookmarksController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
-    // criando o controller tags
-
-    public function isAuthorized($user){
-        $action = $this->request->params['action'];
-
-
-        // as acções add e Index são permitidas sempre.
-        if(in_array($action, ['index', 'add', 'tags'])){
-            return true;
-        }
-        // todas as outra ações requerem um id
-        if (!$this->request->getParam('pass.0')){
-            return false;
-        }
-
-        // checar se o bookmark pertence ao user atual
-        $id = $this->Bookmarks->getParam('pass.0');
-        $bookmark = $this->Bookmarks->get($id);
-        if ($bookmark->user_id == $user['id']){
-            return true;
-        }
-        return parent::isAuthorized($user);
-
-    }
-
-
 }

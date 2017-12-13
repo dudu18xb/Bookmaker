@@ -11,8 +11,8 @@ use Cake\ORM\Entity;
  * @property string $title
  * @property string $description
  * @property string $url
- * @property \Cake\I18n\Time $created
- * @property \Cake\I18n\Time $modified
+ * @property \Cake\I18n\FrozenTime $created
+ * @property \Cake\I18n\FrozenTime $modified
  *
  * @property \App\Model\Entity\User $user
  * @property \App\Model\Entity\Tag[] $tags
@@ -30,7 +30,13 @@ class Bookmark extends Entity
      * @var array
      */
     protected $_accessible = [
-        '*' => true,
-        'id' => false
+        'user_id' => true,
+        'title' => true,
+        'description' => true,
+        'url' => true,
+        'created' => true,
+        'modified' => true,
+        'user' => true,
+        'tags' => true
     ];
 }

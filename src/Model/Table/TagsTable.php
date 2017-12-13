@@ -9,7 +9,7 @@ use Cake\Validation\Validator;
 /**
  * Tags Model
  *
- * @property \Cake\ORM\Association\BelongsToMany $Bookmarks
+ * @property \App\Model\Table\BookmarksTable|\Cake\ORM\Association\BelongsToMany $Bookmarks
  *
  * @method \App\Model\Entity\Tag get($primaryKey, $options = [])
  * @method \App\Model\Entity\Tag newEntity($data = null, array $options = [])
@@ -34,9 +34,9 @@ class TagsTable extends Table
     {
         parent::initialize($config);
 
-        $this->table('tags');
-        $this->displayField('title');
-        $this->primaryKey('id');
+        $this->setTable('tags');
+        $this->setDisplayField('title');
+        $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
 
@@ -60,6 +60,8 @@ class TagsTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
+            ->scalar('title')
+            ->maxLength('title', 255)
             ->allowEmpty('title')
             ->add('title', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
 

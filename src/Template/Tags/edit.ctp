@@ -1,7 +1,8 @@
 <?php
 /**
-  * @var \App\View\AppView $this
-  */
+ * @var \App\View\AppView $this
+ * @var \App\Model\Entity\Tag $tag
+ */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
@@ -22,8 +23,8 @@
     <fieldset>
         <legend><?= __('Edit Tag') ?></legend>
         <?php
-            echo $this->Form->input('title');
-            echo $this->Form->input('bookmarks._ids', ['options' => $bookmarks]);
+            echo $this->Form->control('title');
+            echo $this->Form->control('bookmarks._ids', ['options' => $bookmarks]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

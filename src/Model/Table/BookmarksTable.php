@@ -9,8 +9,8 @@ use Cake\Validation\Validator;
 /**
  * Bookmarks Model
  *
- * @property \Cake\ORM\Association\BelongsTo $Users
- * @property \Cake\ORM\Association\BelongsToMany $Tags
+ * @property \App\Model\Table\UsersTable|\Cake\ORM\Association\BelongsTo $Users
+ * @property \App\Model\Table\TagsTable|\Cake\ORM\Association\BelongsToMany $Tags
  *
  * @method \App\Model\Entity\Bookmark get($primaryKey, $options = [])
  * @method \App\Model\Entity\Bookmark newEntity($data = null, array $options = [])
@@ -25,21 +25,6 @@ use Cake\Validation\Validator;
 class BookmarksTable extends Table
 {
 
-    public function findTagged(Query $query, array $options)
-    {
-        $bookmarks = $this->find()
-            ->select(['id', 'url', 'title', 'description']);
-        if (empty($options['tags'])) {
-            $bookmarks
-                ->leftJoinWith('Tags')
-                ->where(['Tags.title IS' => null]);
-        } else {
-            $bookmarks
-                ->innerJoinWith('Tags')
-                ->where(['Tags.title IN ' => $options['tags']]);
-        }
-        return $bookmarks->group(['Bookmarks.id']);
-    }
     /**
      * Initialize method
      *
@@ -50,9 +35,9 @@ class BookmarksTable extends Table
     {
         parent::initialize($config);
 
-        $this->table('bookmarks');
-        $this->displayField('title');
-        $this->primaryKey('id');
+        $this->setTable('bookmarks');
+        $this->setDisplayField('title');
+        $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
 
@@ -80,12 +65,16 @@ class BookmarksTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
+            ->scalar('title')
+            ->maxLength('title', 50)
             ->allowEmpty('title');
 
         $validator
+            ->scalar('description')
             ->allowEmpty('description');
 
         $validator
+            ->scalar('url')
             ->allowEmpty('url');
 
         return $validator;
@@ -104,8 +93,4 @@ class BookmarksTable extends Table
 
         return $rules;
     }
-
-    // efetuando o sql do model
-
-
 }

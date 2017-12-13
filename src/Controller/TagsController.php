@@ -7,6 +7,8 @@ use App\Controller\AppController;
  * Tags Controller
  *
  * @property \App\Model\Table\TagsTable $Tags
+ *
+ * @method \App\Model\Entity\Tag[] paginate($object = null, array $settings = [])
  */
 class TagsController extends AppController
 {
@@ -14,7 +16,7 @@ class TagsController extends AppController
     /**
      * Index method
      *
-     * @return \Cake\Network\Response|null
+     * @return \Cake\Http\Response|void
      */
     public function index()
     {
@@ -28,7 +30,7 @@ class TagsController extends AppController
      * View method
      *
      * @param string|null $id Tag id.
-     * @return \Cake\Network\Response|null
+     * @return \Cake\Http\Response|void
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function view($id = null)
@@ -44,13 +46,13 @@ class TagsController extends AppController
     /**
      * Add method
      *
-     * @return \Cake\Network\Response|null Redirects on successful add, renders view otherwise.
+     * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
     public function add()
     {
         $tag = $this->Tags->newEntity();
         if ($this->request->is('post')) {
-            $tag = $this->Tags->patchEntity($tag, $this->request->data);
+            $tag = $this->Tags->patchEntity($tag, $this->request->getData());
             if ($this->Tags->save($tag)) {
                 $this->Flash->success(__('The tag has been saved.'));
 
@@ -67,7 +69,7 @@ class TagsController extends AppController
      * Edit method
      *
      * @param string|null $id Tag id.
-     * @return \Cake\Network\Response|null Redirects on successful edit, renders view otherwise.
+     * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function edit($id = null)
@@ -76,7 +78,7 @@ class TagsController extends AppController
             'contain' => ['Bookmarks']
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $tag = $this->Tags->patchEntity($tag, $this->request->data);
+            $tag = $this->Tags->patchEntity($tag, $this->request->getData());
             if ($this->Tags->save($tag)) {
                 $this->Flash->success(__('The tag has been saved.'));
 
@@ -93,7 +95,7 @@ class TagsController extends AppController
      * Delete method
      *
      * @param string|null $id Tag id.
-     * @return \Cake\Network\Response|null Redirects to index.
+     * @return \Cake\Http\Response|null Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function delete($id = null)

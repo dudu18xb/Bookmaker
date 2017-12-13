@@ -38,7 +38,7 @@ class BookmarksTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::exists('Bookmarks') ? [] : ['className' => 'App\Model\Table\BookmarksTable'];
+        $config = TableRegistry::exists('Bookmarks') ? [] : ['className' => BookmarksTable::class];
         $this->Bookmarks = TableRegistry::get('Bookmarks', $config);
     }
 

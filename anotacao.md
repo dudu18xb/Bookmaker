@@ -13,6 +13,8 @@ Ou se o Composer estiver instalado globalmente:
 
 > composer create-project --prefer-dist cakephp/app [app_name]
 
+Para Atualizar as Dependências
+> php composer.phar update
 
 #### Para fazer a instalação do projeto em sua maquina local
 A maneira mais fácil de instalar o CakePHP é usando Composer, um gerenciador de dependências para o PHP. É uma
