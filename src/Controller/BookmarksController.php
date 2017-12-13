@@ -29,13 +29,6 @@ class BookmarksController extends AppController
         $this->set('_serialize', ['bookmarks']);
     }
 
-    /**
-     * View method
-     *
-     * @param string|null $id Bookmark id.
-     * @return \Cake\Http\Response|void
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
     public function view($id = null)
     {
         $bookmark = $this->Bookmarks->get($id, [
@@ -115,4 +108,15 @@ class BookmarksController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function tags()
+    {
+        $tags = $this->request->getParam('pass');
+        $bookmarks = $this->Bookmarks->find('tagged', [
+            'tags' => $tags
+        ]);
+        $this->set(compact('bookmarks', 'tags'));
+    }
+
+
 }
