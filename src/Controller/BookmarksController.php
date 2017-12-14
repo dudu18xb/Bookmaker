@@ -109,6 +109,7 @@ class BookmarksController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
+    // efetuando as  buscas por tags
     public function tags()
     {
         $tags = $this->request->getParam('pass');
@@ -116,6 +117,12 @@ class BookmarksController extends AppController
             'tags' => $tags
         ]);
         $this->set(compact('bookmarks', 'tags'));
+    }
+
+    //restrigindo acesso
+    public function isAuthorized($user)
+    {
+        return false;
     }
 
 
