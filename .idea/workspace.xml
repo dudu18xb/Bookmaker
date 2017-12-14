@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d05a83f-697a-4dc1-bbab-aba72f544969" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Template/Users/login.ctp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/AppController.php" afterPath="$PROJECT_DIR$/src/Controller/AppController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controller/UsersController.php" afterPath="$PROJECT_DIR$/src/Controller/UsersController.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,17 +13,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="login.ctp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Template/Users/login.ctp">
+      <file leaf-file-name="UsersController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Controller/UsersController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="23" lean-forward="false" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
+            <state relative-caret-position="243">
+              <caret line="115" column="22" lean-forward="true" selection-start-line="115" selection-start-column="22" selection-end-line="115" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>You are not authorized to access that location.</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -41,8 +43,8 @@
         <option value="$PROJECT_DIR$/src/Model/Table/BookmarksTable.php" />
         <option value="$PROJECT_DIR$/src/Template/Bookmarks/tags.ctp" />
         <option value="$PROJECT_DIR$/src/Controller/AppController.php" />
-        <option value="$PROJECT_DIR$/src/Controller/UsersController.php" />
         <option value="$PROJECT_DIR$/src/Template/Users/login.ctp" />
+        <option value="$PROJECT_DIR$/src/Controller/UsersController.php" />
       </list>
     </option>
   </component>
@@ -97,14 +99,7 @@
               <item name="teste" type="b2602c69:ProjectViewProjectNode" />
               <item name="teste" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Template" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="teste" type="b2602c69:ProjectViewProjectNode" />
-              <item name="teste" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Template" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Users" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Controller" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
@@ -141,12 +136,12 @@
       <updated>1513125926255</updated>
       <workItem from="1513125927975" duration="4555000" />
       <workItem from="1513130535153" duration="5000" />
-      <workItem from="1513212456821" duration="1731000" />
+      <workItem from="1513212456821" duration="2184000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6291000" />
+    <option name="totallyTimeSpent" value="6744000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -198,17 +193,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/BookmarksController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="113" column="40" lean-forward="true" selection-start-line="113" selection-start-column="40" selection-end-line="113" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/Table/BookmarksTable.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="311">
           <caret line="95" column="0" lean-forward="true" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -254,9 +243,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/Users/login.ctp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/BookmarksController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1014">
+          <caret line="113" column="40" lean-forward="true" selection-start-line="113" selection-start-column="40" selection-end-line="113" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/AppController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
+        <state relative-caret-position="532">
           <caret line="55" column="10" lean-forward="true" selection-start-line="55" selection-start-column="10" selection-end-line="55" selection-end-column="10" />
           <folding />
         </state>
@@ -264,16 +269,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/UsersController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="117" column="62" lean-forward="false" selection-start-line="117" selection-start-column="62" selection-end-line="117" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/Users/login.ctp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="23" lean-forward="false" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
+        <state relative-caret-position="243">
+          <caret line="115" column="22" lean-forward="true" selection-start-line="115" selection-start-column="22" selection-end-line="115" selection-end-column="22" />
           <folding />
         </state>
       </provider>

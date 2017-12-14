@@ -54,11 +54,11 @@ class UsersController extends AppController
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
+                $this->Flash->success(__('O usuário foi salvo.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The user could not be saved. Please, try again.'));
+            $this->Flash->error(__('O usuário não pôde ser salvo. Por favor, tente novamente.'));
         }
         $this->set(compact('user'));
         $this->set('_serialize', ['user']);
@@ -79,11 +79,11 @@ class UsersController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
+                $this->Flash->success(__('Usuário Salvo com Sucesso'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The user could not be saved. Please, try again.'));
+            $this->Flash->error(__('O usuário não pôde ser salvo. Por favor, tente novamente'));
         }
         $this->set(compact('user'));
         $this->set('_serialize', ['user']);
@@ -101,13 +101,15 @@ class UsersController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $user = $this->Users->get($id);
         if ($this->Users->delete($user)) {
-            $this->Flash->success(__('The user has been deleted.'));
+            $this->Flash->success(__('O Usuário deletado com Sucesso'));
         } else {
-            $this->Flash->error(__('The user could not be deleted. Please, try again.'));
+            $this->Flash->error(__('O usuário não pôde ser excluído. Por favor, tente novamente.'));
         }
 
         return $this->redirect(['action' => 'index']);
     }
+
+    // para efetuar o login
     public function login(){
         if ($this->request->is('post')){
             $user = $this->Auth->identify();
@@ -117,6 +119,11 @@ class UsersController extends AppController
             }
             $this->Flash->error("Usuário ou senha Invalidos");
         }
+    }
+    // para fazer o logout
+    public function logout(){
+        $this->Flash->success("Voce Saiu do Sistema");
+        return $this->redirect($this->Auth->logout());
     }
 
 }
