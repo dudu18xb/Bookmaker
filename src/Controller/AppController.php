@@ -47,7 +47,8 @@ class AppController extends Controller
             'loginAction' => [
                 'controller' => 'Users',
                 'action' => 'login'
-            ]
+            ],
+            'unauthorizedRedirect' => $this->referer()
         ]);
 
         // permite a ação do display, assim pages controller
@@ -61,5 +62,10 @@ class AppController extends Controller
         //$this->loadComponent('Security');
         //$this->loadComponent('Csrf');
     }
+    public function isAuthorized($user)
+    {
+        return false;
+    }
+
 
 }
