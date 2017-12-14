@@ -126,4 +126,10 @@ class UsersController extends AppController
         return $this->redirect($this->Auth->logout());
     }
 
+    //ativando as inscrições
+    public function beforeFilter(\Cake\Event\Event $event)
+    {
+        $this->Auth->allow(['add']);
+    }
+
 }
